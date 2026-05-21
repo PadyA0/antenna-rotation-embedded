@@ -15,6 +15,7 @@ void setup() {
 }
 
 void loop() {
+  unsigned long t = millis();  // for timestamping
   potVal = analogRead(potPin); 
    angle = map(potVal,0,1023,0,179);
   smoothAngle = (0.8* smoothAngle) + (0.2 * angle);
@@ -28,21 +29,21 @@ void loop() {
   //myServo.write(angle);  // temporary test
 
   if(millis()-lastPrint > 100 ){        //makes serial monitor output legible
-      Serial.print("potVal: ");
-      Serial.print(potVal);
-      Serial.print(", angle: ");
-      Serial.print(angle);
-      Serial.print(", smoothAngle: ");
-      Serial.println((int)smoothAngle);
+        // Serial.print("potVal: ");
+        // Serial.print(potVal);     // this is for debugging pot value
+
+        // JSon output
+      Serial.print("{\"t\":");
+      Serial.print(t);
+      Serial.print(", \"angle\": ");
+      //Serial.print(angle);
+     // Serial.print(", smoothAngle: ");
+      Serial.print((int)smoothAngle);
+      Serial.println("}");
       lastPrint = millis();
   }
 
-  // Serial.print("potVal: ");
-  //     Serial.print(potVal);
-  //     Serial.print(", angle: ");       //test
-  //     Serial.print(angle);
-  //     Serial.println();
 
-  delay(25);
+  delay(5);
 
 }
