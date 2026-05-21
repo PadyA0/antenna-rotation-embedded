@@ -6,5 +6,5 @@ Hardware: Arduino Uno, Servo motor, Potentiometer, H-bridge.
 
 Subsystem role: motor control, angle sensing, timestamping, data packet streaming.
 
-Current status: ongoing
+Current status: ongoing  (the programming started in a procedural manner)
 
